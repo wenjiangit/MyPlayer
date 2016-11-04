@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.douliu.myplayer.ui.fragments.ChosenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.jude.easyrecyclerview.swipe.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.jude.easyrecyclerview.EasyRecyclerView>
+    </com.jude.easyrecyclerview.swipe.SwipeRefreshLayout>
+
+</FrameLayout>
