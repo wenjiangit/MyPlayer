@@ -5,4 +5,6 @@ package com.douliu.myplayer.base;
  */
 public interface BaseView<T> {
     void setPresenter(T presenter);
+
+    void showError(Throwable e);
 }

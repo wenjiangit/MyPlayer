@@ -50,6 +50,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
+        ButterKnife.unbind(this);
         mPresenter.dettachView();
         mPresenter = null;
     }
