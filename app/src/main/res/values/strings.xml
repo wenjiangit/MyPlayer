@@ -12,7 +12,9 @@
     <string name="mian_tab3">发现</string>
     <string name="mian_tab4">我的</string>
 
-    <string name="back_to_exit">再按一次退出</string>
+    <string name="back_to_exit">再按返回键退出</string>
+
+    <string name="erro_msg">网络不见啦~~~</string>
 
     <string name="nav_desc">you can do it ~~~~</string>
 
