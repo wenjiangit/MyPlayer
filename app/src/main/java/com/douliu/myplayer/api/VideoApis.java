@@ -1,8 +1,13 @@
 package com.douliu.myplayer.api;
 
 import com.douliu.myplayer.bean.VideoHttpResponse;
+import com.douliu.myplayer.bean.VideoRes;
+import com.douliu.myplayer.bean.VideoType;
+
+import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -18,7 +23,10 @@ public interface VideoApis {
      */
 
     @GET("homePageApi/homePage.do")
-    Observable<VideoHttpResponse> getHomePage();
+    Observable<VideoHttpResponse<VideoRes>> getHomePage();
 
+
+    @GET("videoDetailApi/videoDetail.do")
+    Observable<VideoHttpResponse<VideoRes>> getVideoDetail(@Query("mediaId") String mediaId);
 
 }

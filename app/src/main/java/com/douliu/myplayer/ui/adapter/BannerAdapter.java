@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.douliu.myplayer.bean.VideoType;
+import com.douliu.myplayer.bean.VideoInfo;
 import com.douliu.myplayer.utils.ImageLoader;
 
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ import java.util.List;
  */
 public class BannerAdapter extends PagerAdapter{
 
-    private List<VideoType> mVideoInfos;
+    private List<VideoInfo> mVideoInfos;
 
     private static List<ImageView> mImageList = new ArrayList<>();
 
     private Context mContext;
 
-    public BannerAdapter(Context ctx,List<VideoType> list) {
+    public BannerAdapter(Context ctx,List<VideoInfo> list) {
         mVideoInfos = list;
         mContext = ctx;
         initImageList();
@@ -37,7 +37,7 @@ public class BannerAdapter extends PagerAdapter{
         }
     }
 
-    public void setData(List<VideoType> list){
+    public void setData(List<VideoInfo> list){
         mVideoInfos = list;
         notifyDataSetChanged();
     }

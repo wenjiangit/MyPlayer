@@ -2,8 +2,7 @@ package com.douliu.myplayer.mvp.contract;
 
 import com.douliu.myplayer.base.BasePresenter;
 import com.douliu.myplayer.base.BaseView;
-import com.douliu.myplayer.bean.VideoHttpResponse;
-import com.douliu.myplayer.bean.VideoInfo;
+import com.douliu.myplayer.bean.VideoType;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class ChosenContract {
     }
 
     public interface View extends BaseView<Presenter>{
-        void showContent(List<VideoInfo> list);
+        void showContent(List<VideoType> list);
     }
 
 

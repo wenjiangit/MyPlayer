@@ -31,8 +31,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mPresenter = createPresenter();
-        mPresenter.attachView(this);
+        if (createPresenter() != null){
+            mPresenter = createPresenter();
+            mPresenter.attachView(this);
+        }
         if (mRootView == null){
             mRootView = inflater.inflate(getLayout(),container,false);
         }

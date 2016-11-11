@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyPlayer</string>
+    <string name="app_name">welfare video</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,7 +12,7 @@
     <string name="mian_tab3">发现</string>
     <string name="mian_tab4">我的</string>
 
-    <string name="back_to_exit">再按返回键退出</string>
+    <string name="back_to_exit">再按一次返回键退出程序</string>
 
     <string name="erro_msg">网络不见啦~~~</string>
 
@@ -26,7 +26,6 @@
     <string name="nav_menu_setting">设置</string>
     <string name="nav_menu_about">关于</string>
     <string name="nav_menu_subject">主题</string>
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

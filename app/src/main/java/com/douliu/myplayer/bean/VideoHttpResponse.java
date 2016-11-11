@@ -1,16 +1,13 @@
 package com.douliu.myplayer.bean;
 
-import java.util.List;
-
 /**
  * Created by douliu on 2016/11/8.
  */
-public class VideoHttpResponse {
-
+public class VideoHttpResponse<T>{
 
     private String msg;
-    private Ret ret;
-    private String code;
+    private T ret;
+    private int code;
 
     public String getMsg() {
         return msg;
@@ -20,19 +17,19 @@ public class VideoHttpResponse {
         this.msg = msg;
     }
 
-    public Ret getRet() {
+    public T getRet() {
         return ret;
     }
 
-    public void setRet(Ret ret) {
+    public void setRet(T ret) {
         this.ret = ret;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

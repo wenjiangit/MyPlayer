@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.douliu.myplayer.R;
-import com.douliu.myplayer.bean.VideoType;
+import com.douliu.myplayer.bean.VideoInfo;
 import com.douliu.myplayer.utils.ImageLoader;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -14,7 +14,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 /**
  * Created by wenjian on 2016/11/8.
  */
-public class ChosenAdapter extends RecyclerArrayAdapter<VideoType>{
+public class ChosenAdapter extends RecyclerArrayAdapter<VideoInfo>{
 
     public ChosenAdapter(Context context) {
         super(context);
@@ -25,7 +25,7 @@ public class ChosenAdapter extends RecyclerArrayAdapter<VideoType>{
         return new ChosenViewHolder(parent);
     }
 
-    class ChosenViewHolder extends BaseViewHolder<VideoType>{
+    class ChosenViewHolder extends BaseViewHolder<VideoInfo>{
         private ImageView mMoviePic;
         private TextView mMovieName;
         private Context mContext;
@@ -38,7 +38,7 @@ public class ChosenAdapter extends RecyclerArrayAdapter<VideoType>{
         }
 
         @Override
-        public void setData(VideoType data) {
+        public void setData(VideoInfo data) {
             if (data.getPic() != null){
                 ImageLoader.display(mContext,data.getPic(),mMoviePic);
             }

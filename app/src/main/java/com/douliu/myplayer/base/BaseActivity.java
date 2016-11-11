@@ -1,11 +1,14 @@
 package com.douliu.myplayer.base;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.douliu.myplayer.R;
 import com.douliu.myplayer.app.App;
@@ -50,11 +53,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             setSupportActionBar(mToolbar);
             mActionBar = getSupportActionBar();
             if (canBack()){
-                mActionBar.setDefaultDisplayHomeAsUpEnabled(true);
+                mActionBar.setDisplayHomeAsUpEnabled(true);
             }else {
                 mActionBar.setDisplayHomeAsUpEnabled(true);
                 mActionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-//                mActionBar.setDisplayShowHomeEnabled(true);
             }
             if (Build.VERSION.SDK_INT >= 21){
                 mActionBar.setElevation(10.6f);//z轴浮动
@@ -84,5 +86,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onDestroy() {
         super.onDestroy();
         App.getInstance().unregistActivity(this);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                if (canBack()){
+                    onBackPressed();
+                }
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

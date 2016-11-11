@@ -14,6 +14,7 @@ import com.douliu.myplayer.bean.VideoInfo;
 import com.douliu.myplayer.bean.VideoType;
 import com.douliu.myplayer.mvp.contract.ChosenContract;
 import com.douliu.myplayer.mvp.presenter.ChosenPresenter;
+import com.douliu.myplayer.ui.activities.VideoInfoActivity;
 import com.douliu.myplayer.ui.adapter.ChosenAdapter;
 import com.douliu.myplayer.utils.EventUtil;
 import com.douliu.myplayer.utils.L;
@@ -23,6 +24,7 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import java.util.List;
 
 import butterknife.Bind;
+import me.relex.circleindicator.CircleIndicator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +39,7 @@ public class ChosenFragment extends BaseFragment<ChosenContract.Presenter> imple
 
     private ChosenAdapter mChosenAdapter;
     private Banner mBanner;
-    private List<VideoType> mTypeList;
+    private List<VideoInfo> mTypeList;
 
     public ChosenFragment() {
         // Required empty public constructor
@@ -72,25 +74,35 @@ public class ChosenFragment extends BaseFragment<ChosenContract.Presenter> imple
     public void showError(Throwable e) {
         e.printStackTrace();
         EventUtil.showToast(getContext(), R.string.erro_msg);
+        if (mRefreshLayout.isRefreshing()){
+            mRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
-    public void showContent(List<VideoInfo> list) {
+    public void setPresenter(ChosenContract.Presenter presenter) {
+    }
+
+    @Override
+    public void showContent(List<VideoType> list) {
         L.d(this.getClass(), "请求结果:" + list);
         mChosenAdapter.clear();
-        if (list != null && list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                if (i == 0) {
-                    mTypeList = list.get(i).getChildList();
-                    mBanner.init(mTypeList, item -> {
-                    });
-                    mBanner.startAutoRun();
-                } else {
-                    mChosenAdapter.addAll(list.get(i).getChildList());
-                }
+        for (VideoType videoType : list){
+            if (videoType.getTitle().equals("Banner")){
+                mBanner.init(videoType.getChildList(), item -> VideoInfoActivity.starter(getContext(),item));
+                mBanner.startAutoRun();
+            }
+            if (videoType.getTitle().equals("精彩推荐")){
+                mChosenAdapter.addAll(videoType.getChildList());
             }
         }
         mRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mBanner.stopAutoRun();
     }
 
     @Override
@@ -107,6 +119,8 @@ public class ChosenFragment extends BaseFragment<ChosenContract.Presenter> imple
         @Override
         public void onBindView(View headerView) {
             mBanner = (Banner) headerView.findViewById(R.id.view_pager);
+            CircleIndicator indicator = (CircleIndicator) headerView.findViewById(R.id.indicator);
+            indicator.setViewPager(mBanner.getViewPager());
         }
     }
 
